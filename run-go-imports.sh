@@ -1,15 +1,8 @@
-#!/usr/bin/env bash
-#
-# Capture and print stdout, since goimports doesn't use proper exit codes
-#
-set -e -o pipefail
+#!/bin/sh
 
-if ! command -v goimports &> /dev/null ; then
-    echo "goimports not installed or available in the PATH" >&2
-    echo "please check https://pkg.go.dev/golang.org/x/tools/cmd/goimports" >&2
+LIST_OF_FILES=$(goimports -l -w "$@")
+# print a list of affected files if any
+echo "$LIST_OF_FILES"
+if [ -n "$LIST_OF_FILES" ];then
     exit 1
 fi
-
-exec 5>&1
-output="$(goimports -l -w "$@" | tee /dev/fd/5)"
-[[ -z "$output" ]]
