@@ -3,7 +3,7 @@
 # Capture and print stdout, since goimports doesn't use proper exit codes
 #
 set -e -o pipefail
-goenv version
+export PATH=$PATH:"$HOME"/go/1.18.0/bin/goimports
 if ! command -v goimports &> /dev/null ; then
     echo "goimports not installed or available in the PATH" >&2
     echo "please check https://pkg.go.dev/golang.org/x/tools/cmd/goimports" >&2
