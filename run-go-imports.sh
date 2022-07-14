@@ -9,7 +9,7 @@ if ! command -v goimports &> /dev/null ; then
     echo "please check https://pkg.go.dev/golang.org/x/tools/cmd/goimports" >&2
     exit 1
 fi
-
+echo "$@"
 exec 5>&1
 output="$(goimports -l -w "$@" | tee /dev/fd/5)"
 [[ -z "$output" ]]
