@@ -4,6 +4,7 @@
 #
 set -e -o pipefail
 export PATH=$PATH:"$HOME"/go/1.18.0/bin/goimports
+echo $PATH
 if ! command -v goimports &> /dev/null ; then
     echo "goimports not installed or available in the PATH" >&2
     echo "please check https://pkg.go.dev/golang.org/x/tools/cmd/goimports" >&2
