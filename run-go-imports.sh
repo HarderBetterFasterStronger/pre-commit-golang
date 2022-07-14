@@ -11,5 +11,7 @@ if ! command -v goimports &> /dev/null ; then
 fi
 echo "$@"
 exec 5>&1
-output="$(goimports -l -w "$@" | tee /dev/fd/5)"
+output="$(goimports -l -w "$@"o)
+echo $output
+exit 1
 [[ -z "$output" ]]
